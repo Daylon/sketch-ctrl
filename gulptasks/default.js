@@ -1,9 +1,11 @@
 'use strict'
 
 const GULP = require( 'gulp' )
+, FS = require( 'fs' )
 , SEQUENCE = require( 'gulp-sequence' )
 , DEL = require( 'del' )
 , UNZIP = require( 'gulp-unzip' )
+, EVENT_STREAM = require('event-stream')
 , PATHS = {
   sources: `sources/**/*.sketch`
   , dist: `unpacked/`
@@ -12,8 +14,9 @@ const GULP = require( 'gulp' )
 let unpack = () => SEQUENCE( 'cleanup', 'unpack-file' )()
 , cleanup = () => DEL( `${PATHS.dist}**/*` )
 , unpackFile = function(){
-  return GULP.src( PATHS.sources )
-    .pipe( UNZIP() )
+  return GULP
+    .src( PATHS.sources )
+    .pipe( UNZIP({ useFolder: true }) )
     .pipe( GULP.dest( PATHS.dist ) )
 }
 , watchFiles = function(){
@@ -23,11 +26,16 @@ let unpack = () => SEQUENCE( 'cleanup', 'unpack-file' )()
   	, [ 'add', 'change', 'unlink' ]
   )
 }
-, defaultGulpTask = () => SEQUENCE( 'unpack', 'watch-files' )()
+, defaultGulptask = () => SEQUENCE( 'unpack', 'watch-files' )()
 
 GULP.task(
   'unpack'
   , unpack
+)
+
+GULP.task(
+  'cleanup'
+  , cleanup
 )
 
 GULP.task(
@@ -36,8 +44,13 @@ GULP.task(
 )
 
 GULP.task(
-  'defaultGulpTask'
-  , defaultGulpTask
+  'watch-files'
+  , watchFiles
 )
 
-module.exports = defaultGulpTask
+GULP.task(
+  'default'
+  , defaultGulptask
+)
+
+module.exports = defaultGulptask
