@@ -1,3 +1,4 @@
+sources/*.sketch
 node_modules/
 wip/
 _*.txt
