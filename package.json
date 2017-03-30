@@ -1,6 +1,7 @@
 {
   "name": "ui-version-ctrl",
   "version": "0.0.1",
+  "repository": "daylon/sketch-ctrl",
   "description": "Usable makeshift version control for your .sketch files",
   "main": "gulpfile.js",
   "scripts": {
