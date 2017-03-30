@@ -55,18 +55,20 @@ let getSourcePath = () => `${PATHS.sources}**/*${PATHS.sketchExt}`
 }
 , defaultGulptask = () => SEQUENCE( 'build-all', 'unpack-files', 'watch-files' )()
 
-// unpack
 
 
 GULP.task( 'cleanup-dist', cleanupDist )
 
 GULP.task( 'cleanup-sources', cleanupSources )
 
+// unpack
+
 GULP.task( 'unpack', unpack )
 
 GULP.task( 'unpack-files', unpackFiles )
 
 GULP.task( 'unpack-sequence', unpackSequence )
+
 // builder
 
 GULP.task( 'build', build )
