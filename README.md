@@ -4,7 +4,7 @@ _a.k.a._ "Sketch Control"
 
 ## Rationale
 
-Version control via user interface tool is a pain, to say the least. And while some apps offer us the promise of better futures —[InVision Sync](https://www.invisionapp.com/), [Abstract App](https://abstractapp.com) (the most promising for the time being), [Picnic](http://picnic.design/)… [Even Google Drive now let us to "manage versions"](https://support.google.com/drive/answer/2409045) of a given file (good on you if you're ever able to tell one version from the other apart from the sync date)— we're still bound to find complicated, self-contradictory file names to tell versions, major milestones or tweaks.
+Version control via user interface tool is a pain, to say the least. And while some apps offer us the promise of better futures —[InVision Sync](https://www.invisionapp.com/), [Abstract App](https://abstractapp.com) (the most promising for the time being), [Picnic](http://picnic.design/)… [Even Google Drive now let us to "manage versions"](https://support.google.com/drive/answer/2409045) of a given file (good on you if you're ever able to tell one version from the other apart from the sync date)— we're still bound to find complicated, self-contradictory filenames to tell versions, major milestones or tweaks.
 
 Sketch 43 and upwards sport a new file format, [which is basically a set of JSON data files, all zipped out together](http://sketchplugins.com/d/87-new-file-format-in-sketch-43) —You said JSON? Yes, JSON. And this file format is _quite interesting_ when considered within a git repository.
 
@@ -31,11 +31,13 @@ She starts building a nice a fancy user interface, then saves her work as `clien
 ~/Documents/sketch-ctrl/sources/client-ui.sketch
 ```
 
-This Gulp script then automatically unzip the source at `/sketch-ctrl/dist/`. Sketch sources are ignored by Git. And since we're dealing with, unpacked files are can now be staged with a proper commit and pushed on a remote.
+This Gulp script then automatically unzip the source at `/sketch-ctrl/dist/`. Sketch sources are ignored by Git. And since we're dealing mainly with plain-text file formats, data can now be staged with a proper commit and pushed on a remote**.
 
 Her colleague Bob can now retrieve _in realtime_ Alice's work, branch it out, merge, edit and commit to the same remote without destroying it. **Bonus:** Alice and Bob can now groom a clean shared history.
 
-_*: well, yes, this is not a nice a friendly WYSIWYG, but I could be so, I think, with a bit more work.
+*: well, yes, this is not a nice a friendly WYSIWYG, but I could be so, I think, with a bit more work.
+
+**: as of today, it's not quite human readable. This is a "to do".
 
 
 
