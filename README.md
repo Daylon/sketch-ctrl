@@ -1,5 +1,7 @@
 # Sketch-ctrl
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Daylon/sketch-ctrl.svg)](https://greenkeeper.io/)
+
 _a.k.a._ "Sketch Control"
 
 ## Rationale
